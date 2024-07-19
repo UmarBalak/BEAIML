@@ -4,7 +4,7 @@ import os
 def read_code(file_path):
     with open(file_path, 'r') as file:
         return file.read()
-    
+
 
 st.title("BE AIML Practicals Repository")
 
@@ -22,6 +22,5 @@ for practical in practicals:
     code = read_code(practical_path)
 
     st.subheader(f"{practical.replace('.py', '').replace('_', ' ').title()}")
-    st.code(code, language='python')
-    # st.button(f"Copy", on_click=lambda code=code: st.code(code, language='python'))
+    st.code(code, language='python', line_numbers=False)
 
