@@ -1,0 +1,82 @@
+[33mcommit ddb9c662cf24c53b6ce244e7b557429935f67663[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Umar Balak <umarbalak35@gmail.com>
+Date:   Fri Jul 19 22:16:18 2024 +0530
+
+    add custom theme
+
+[1mdiff --git a/.streamlit/config.toml b/.streamlit/config.toml[m
+[1mnew file mode 100644[m
+[1mindex 0000000..43e8847[m
+[1m--- /dev/null[m
+[1m+++ b/.streamlit/config.toml[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m[theme][m
+[32m+[m[32mprimaryColor="#00a67e"[m
+[32m+[m[32mbackgroundColor="#202020"[m
+[32m+[m[32msecondaryBackgroundColor="#000000"[m
+[32m+[m[32mtextColor="#eaeaea"[m
+[32m+[m[32mfont="monospace"[m
+[1mdiff --git a/app/main.py b/app/main.py[m
+[1mindex 7010cd7..bfdc4b5 100644[m
+[1m--- a/app/main.py[m
+[1m+++ b/app/main.py[m
+[36m@@ -4,7 +4,7 @@[m [mimport os[m
+ def read_code(file_path):[m
+     with open(file_path, 'r') as file:[m
+         return file.read()[m
+[31m-    [m
+[32m+[m
+ [m
+ st.title("BE AIML Practicals Repository")[m
+ [m
+[36m@@ -22,6 +22,5 @@[m [mfor practical in practicals:[m
+     code = read_code(practical_path)[m
+ [m
+     st.subheader(f"{practical.replace('.py', '').replace('_', ' ').title()}")[m
+[31m-    st.code(code, language='python')[m
+[31m-    # st.button(f"Copy", on_click=lambda code=code: st.code(code, language='python'))[m
+[32m+[m[32m    st.code(code, language='python', line_numbers=False)[m
+ [m
+[1mdiff --git a/practicals/dl/p1.py b/practicals/dl/p1.py[m
+[1mindex 1376cb8..394f1a3 100644[m
+[1m--- a/practicals/dl/p1.py[m
+[1m+++ b/practicals/dl/p1.py[m
+[36m@@ -1,12 +1,29 @@[m
+[31m-import streamlit as st[m
+[31m-import os[m
+[32m+[m[32mimport numpy as np[m
+[32m+[m[32mfrom tensorflow.keras.models import Sequential[m
+[32m+[m[32mfrom tensorflow.keras.layers import Dense[m
+[32m+[m[32mfrom tensorflow.keras.optimizers import Adam[m
+ [m
+[31m-st.title("BE AIML Practicals Repository")[m
+[32m+[m[32m# XOR input data[m
+[32m+[m[32mX = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])[m
+[32m+[m[32m# XOR output data[m
+[32m+[m[32my = np.array([[0], [1], [1], [0]])[m
+ [m
+[31m-SUBJECT_DIR = 'practicals'[m
+[31m-subjects = [d for d in os.listdir(SUBJECT_DIR) if os.path.isdir(os.path.join(SUBJECT_DIR, d))][m
+[32m+[m[32m# Define the model[m
+[32m+[m[32mmodel = Sequential()[m
+[32m+[m[32mmodel.add(Dense(8, input_dim=2, activation='relu'))  # Hidden layer with 8 neurons[m
+[32m+[m[32mmodel.add(Dense(1, activation='sigmoid'))  # Output layer[m
+ [m
+[31m-selected_subject = st.sidebar.selectbox("Select Subject", subjects)[m
+[32m+[m[32m# Compile the model[m
+[32m+[m[32mmodel.compile(optimizer=Adam(learning_rate=0.01), loss='binary_crossentropy', metrics=['accuracy'])[m
+ [m
+[31m-st.header(f"Subject: {selected_subject.upper()}")[m
+[31m-st.write("Select a practical to view its code.")[m
+\ No newline at end of file[m
+[32m+[m[32m# Train the model[m
+[32m+[m[32mmodel.fit(X, y, epochs=1000, verbose=0)[m
+[32m+[m
+[32m+[m[32m# Evaluate the model[m
+[32m+[m[32mloss, accuracy = model.evaluate(X, y)[m
+[32m+[m[32mprint(f'Accuracy: {accuracy * 100:.2f}%')[m
+[32m+[m
+[32m+[m[32m# Predict using the model[m
+[32m+[m[32mpredictions = model.predict(X)[m
+[32m+[m[32mprint('Predictions:')[m
+[32m+[m[32mprint(np.round(predictions).astype(int))[m

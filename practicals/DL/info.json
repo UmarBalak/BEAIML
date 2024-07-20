@@ -1,0 +1,18 @@
+{
+    "subject": "Deep Learning",
+    "practicals": [
+        {
+            "name": "DL libraries",
+            "files": ["main.py", "SLP.py"],
+            "aim": "To understand basic ML algorithms.",
+            "con": "Requires good understanding of mathematics."
+        },
+        {
+            "name": "XOR Using MLP",
+            "files": ["main.py"],
+            "aim": "To practice data preprocessing techniques.",
+            "con": "May be time-consuming."
+        }
+    ],
+    "notes": "Additional notes about the subject."
+}
