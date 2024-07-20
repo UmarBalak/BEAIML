@@ -63,8 +63,17 @@ def display_practical_code(practical_dir, practical_info):
             file_path = os.path.join(practical_dir, file)
             if os.path.isfile(file_path):
                 code = read_code(file_path)
-                st.markdown(f"`{file}`")
+                # st.subheader(file)
+                st.markdown(
+                    f"""
+                    <div style="padding: 3px; padding-left: 15px; border-radius: 7px 7px 7px 7px; background-color: #2f2f2f;">
+                        <span style="color: #A9A9A9;">{file}</span>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
                 st.code(code, language='python', line_numbers=True)
+                st.download_button(label=f"Download", data=code, file_name=file, mime="text/x-python")
                 st.markdown("---")
                 files_found = True
 
