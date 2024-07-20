@@ -1,73 +1,49 @@
 import streamlit as st
 import os
+from functions import get_subjects, read_subject_info, list_files, read_code, display_practical_code, SUBJECT_DIR
 
-# Cache the function to read the content of a file
-@st.cache_data
-def read_code(file_path):
-    with open(file_path, 'r') as file:
-        return file.read()
+st.markdown("""
+<style>
+    [data-testid=stSidebar] {
+        background-color: #171717;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-def get_subjects(subject_dir):
-    return [d for d in os.listdir(subject_dir) if os.path.isdir(os.path.join(subject_dir, d))]
-
-def get_practicals(practicals_dir):
-    practicals = {}
-    for folder in os.listdir(practicals_dir):
-        folder_path = os.path.join(practicals_dir, folder)
-        if os.path.isdir(folder_path):
-            files = sorted([f for f in os.listdir(folder_path) if f.endswith('.py')])
-            practicals[folder] = files
-    return practicals
-
-
-# Main function to build the Streamlit app
 def main():
-    st.title("BE AIML Practicals Repository")
-
-    SUBJECT_DIR = 'practicals'
+    st.title("AIML Practical Hub")
 
     # Fetch the list of subjects
     subjects = get_subjects(SUBJECT_DIR)
-    st.markdown("""
-    <style>
-        [data-testid=stSidebar] {
-            background-color: #151515;
-        }
-    </style>
-    """, unsafe_allow_html=True)
-    st.sidebar.header("Code Repository")
-    
+
+    st.sidebar.header("Practical Menu")
+
     if subjects:
-        # Select subject
         selected_subject = st.sidebar.selectbox("Select Subject", subjects)
-        
-        # Display subject header
-        st.header(f"Subject: {selected_subject.upper()}")
-        
-        # Get practicals for the selected subject
-        practicals_dir = os.path.join(SUBJECT_DIR, selected_subject)
-        practicals = get_practicals(practicals_dir)
 
-        if practicals:
-            # Select practical
-            selected_practical = st.sidebar.radio("Select Practical", list(practicals.keys()))
+        subject_info = read_subject_info(selected_subject)
+        # st.write(f"**{selected_subject}**")
+        if subject_info:
+            practical_names = [p['name'] for p in subject_info.get("practicals", [])]
+            if practical_names:
+                selected_practical_name = st.sidebar.radio("Select Practical", practical_names)
+                practical_info = next((p for p in subject_info['practicals'] if p['name'] == selected_practical_name), None)
 
-            # Get files for the selected practical
-            files = practicals[selected_practical]
-            files.sort(key=lambda x: (x != 'main.py', x))  # Ensure 'main.py' is at the top
+                if practical_info:
+                    practicals_dir = os.path.join(SUBJECT_DIR, selected_subject, selected_practical_name)
 
-            for file in files:
-                file_path = os.path.join(practicals_dir, selected_practical, file)
-                code = read_code(file_path)
-                # st.subheader(f"{file.replace('.py', '').replace('_', ' ').title()}")
-                st.markdown(f" `{file}` ")
-                st.code(code, language='python', line_numbers=True)
-                st.markdown("---")
+                    if os.path.isdir(practicals_dir):
+                        display_practical_code(practicals_dir, practical_info)
+                    else:
+                        st.warning(f"Sorry, the practical '{selected_practical_name}' is not yet available. We will upload the details soon.")
+                else:
+                    st.warning("No details are available for the selected practical at the moment. We are working on it.")
+            else:
+                st.warning("Currently, there are no practicals available for this subject. Please check back later.")
         else:
-            st.write("No practicals available for the selected subject.")
+            st.warning("Sorry, we don't have information for this subject right now. Please check back later.")
     else:
-        st.write("No subjects available in the repository.")
+        st.warning("Currently, there are no subjects available in the repository. We are updating our content and will have more subjects soon.")
 
 if __name__ == "__main__":
     main()
-

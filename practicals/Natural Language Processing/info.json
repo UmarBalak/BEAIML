@@ -1,0 +1,11 @@
+{
+    "subject": "Natural Language Processing",
+    "practicals": [
+        {
+            "name": "stemming",
+            "files": ["stem.py"],
+            "aim": "To understand basic ML algorithms.",
+            "con": "Requires good understanding of mathematics."
+        }
+    ]
+}
