@@ -10,12 +10,17 @@ def main():
         initial_sidebar_state="expanded",
     )
     hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-    st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+    <style>
+    #MainMenu {visibility: hidden;} /* Hides the main menu */
+    footer {visibility: hidden;} /* Hides the footer */
+    header {visibility: hidden;} /* Hides the header */
+    .css-1d391kg {visibility: hidden;} /* Hides the status indicator */
+    .css-1v3fvcr {visibility: hidden;} /* Hides the Streamlit watermark */
+    .css-1v0mbdj {visibility: hidden;} /* Hides the overall container */
+    </style>
+    """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
     st.markdown("""
         <style>
             [data-testid=stSidebar] {
