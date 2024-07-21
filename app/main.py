@@ -2,15 +2,28 @@ import streamlit as st
 import os
 from functions import get_subjects, read_subject_info, list_files, read_code, display_practical_code, SUBJECT_DIR
 
-st.markdown("""
-<style>
-    [data-testid=stSidebar] {
-        background-color: #171717;
-    }
-</style>
-""", unsafe_allow_html=True)
-
 def main():
+    st.set_page_config(
+        page_title="AIML Practical Hub",
+        page_icon=":open_file_folder:",
+        # layout="wide",
+        initial_sidebar_state="expanded",
+    )
+    hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+    st.markdown("""
+        <style>
+            [data-testid=stSidebar] {
+                background-color: #171717;
+            }
+        </style>
+        """, unsafe_allow_html=True)
+    
     st.title("AIML Practical Hub")
 
     # Fetch the list of subjects
