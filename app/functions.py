@@ -6,7 +6,6 @@ SUBJECT_DIR = 'practicals'
 
 @st.cache_data
 def read_code(file_path):
-    """Read the content of a file."""
     try:
         with open(file_path, 'r') as file:
             return file.read()
@@ -53,8 +52,25 @@ def display_practical_code(practical_dir, practical_info):
     """Display code files for a practical."""
     files_sorted = list_files(practical_dir)
 
-    st.subheader("Aim")
-    st.write(practical_info.get("aim", "No aim has been provided for this practical yet. We will update it soon."))
+    # st.subheader("Aim")
+    st.markdown("""
+    <style>
+    .subheader {
+        color: #00a67e; 
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 0; 
+        padding: 0;
+    }
+    .aim-content {
+        margin-top: 0;
+        padding: 0;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    st.markdown('<h2 class="subheader">Aim</h2>', unsafe_allow_html=True)
+    st.markdown(f'<div class="aim-content">{practical_info.get("aim", "No aim has been provided for this practical yet. We will update it soon.")}</div>', unsafe_allow_html=True)
+
     st.markdown("---")  
 
     if files_sorted:
@@ -63,7 +79,6 @@ def display_practical_code(practical_dir, practical_info):
             file_path = os.path.join(practical_dir, file)
             if os.path.isfile(file_path):
                 code = read_code(file_path)
-                # st.subheader(file)
                 st.markdown(
                     f"""
                     <div style="padding: 3px; padding-left: 15px; border-radius: 7px 7px 7px 7px; background-color: #2f2f2f;">
@@ -82,5 +97,20 @@ def display_practical_code(practical_dir, practical_info):
     else:
         st.warning("Currently, no code files are available for this practical. We are working on updating this soon.")
 
-    st.subheader("Conclusion")
-    st.write(practical_info.get("con", "No conclusion has been provided for this practical yet. We will update it soon."))
+    st.markdown("""
+    <style>
+    .subheader {
+        color: #00a67e; 
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 0; 
+        padding: 0;
+    }
+    .aim-content {
+        margin-top: 0;
+        padding: 0;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    st.markdown('<h2 class="subheader">Conclusion</h2>', unsafe_allow_html=True)
+    st.markdown(f'<div class="aim-content">{practical_info.get("con", "No conclusion has been provided for this practical yet. We will update it soon.")}</div>', unsafe_allow_html=True)

@@ -6,7 +6,6 @@ def main():
     st.set_page_config(
         page_title="AIML Practical Hub",
         page_icon=":open_file_folder:",
-        # layout="wide",
         initial_sidebar_state="expanded",
     )
     hide_streamlit_style = """
@@ -20,7 +19,6 @@ def main():
     </style>
     """
     st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
     st.markdown("""
         <style>
             [data-testid=stSidebar] {
@@ -28,16 +26,23 @@ def main():
             }
         </style>
         """, unsafe_allow_html=True)
-    
     st.title("AIML Practical Hub")
 
     # Fetch the list of subjects
     subjects = get_subjects(SUBJECT_DIR)
 
-    st.sidebar.header("Practical Menu")
+    st.sidebar.markdown("""
+    <style>
+    .sidebar-header {
+        color: #00a67e;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    st.sidebar.markdown('<h1 class="sidebar-header">Practical Menu</h1>', unsafe_allow_html=True)
 
     if subjects:
         selected_subject = st.sidebar.selectbox("Select Subject", subjects)
+        st.sidebar.markdown("---")
 
         subject_info = read_subject_info(selected_subject)
         # st.write(f"**{selected_subject}**")
@@ -62,6 +67,10 @@ def main():
             st.warning("Sorry, we don't have information for this subject right now. Please check back later.")
     else:
         st.warning("Currently, there are no subjects available in the repository. We are updating our content and will have more subjects soon.")
-
+    
 if __name__ == "__main__":
     main()
+
+
+
+
