@@ -1,18 +1,36 @@
-# utils.py
 import numpy as np
 
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
+def unitStep(v):
+	if v >= 0:
+		return 1
+	else:
+		return 0
 
-def sigmoid_derivative(x):
-    return x * (1 - x)
+def perceptronModel(x, w, b):
+	v = np.dot(w, x) + b
+	y = unitStep(v)
+	return y
 
-def initialize_weights(input_size, hidden_size, output_size):
-    weights_input_hidden = np.random.rand(input_size, hidden_size)
-    weights_hidden_output = np.random.rand(hidden_size, output_size)
-    return weights_input_hidden, weights_hidden_output
+# NOT Logic Function
+# wNOT = -1, bNOT = 0.5
+def NOT_logicFunction(x):
+	wNOT = -1
+	bNOT = 0.5
+	return perceptronModel(x, wNOT, bNOT)
 
-def forward_pass(inputs, weights_input_hidden, weights_hidden_output):
-    hidden_layer_activation = sigmoid(np.dot(inputs, weights_input_hidden))
-    output_layer_activation = sigmoid(np.dot(hidden_layer_activation, weights_hidden_output))
-    return hidden_layer_activation, output_layer_activation
+# AND Logic Function
+# here w1 = wAND1 = 1, 
+# w2 = wAND2 = 1, bAND = -1.5
+def AND_logicFunction(x):
+	w = np.array([1, 1])
+	bAND = -1.5
+	return perceptronModel(x, w, bAND)
+
+# OR Logic Function
+# w1 = 1, w2 = 1, bOR = -0.5
+def OR_logicFunction(x):
+	w = np.array([1, 1])
+	bOR = -0.5
+	return perceptronModel(x, w, bOR)
+
+

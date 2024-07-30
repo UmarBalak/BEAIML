@@ -2,15 +2,9 @@
     "subject": "Deep Learning",
     "practicals": [
         {
-            "name": "Implement SLP",
-            "files": ["main.py", "functions.py"],
-            "aim": "To implement a Single Layer Perceptron (SLP) model from scratch.",
-            "con": "We successfully implemented a Single Layer Perceptron (SLP) model from scratch to tackle a basic classification problem."
-        },
-        {
             "name": "XOR Using MLP",
             "files": ["main.py", "functions.py"],
-            "aim": "To implement a Multi-Layer Perceptron (MLP) model to solve the XOR problem.",
+            "aim": "Implement a Multi-Layer Perceptron (MLP) model to simulate the XOR Gate.",
             "con": "We successfully implemented a Multi-Layer Perceptron (MLP) model to solve the XOR problem, a classic example in machine learning that highlights the power of neural networks in capturing non-linear relationships."
         }
     ]

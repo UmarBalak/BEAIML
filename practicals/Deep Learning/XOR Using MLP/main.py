@@ -1,38 +1,21 @@
-# main.py
-import numpy as np
-from functions import sigmoid, sigmoid_derivative, initialize_weights, forward_pass
+from functions import *
 
-# Example data
-inputs = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
-outputs = np.array([[0], [1], [1], [0]])
+# XOR Logic Function
+def XOR_logicFunction(x):
+	y1 = AND_logicFunction(x)
+	y2 = OR_logicFunction(x)
+	y3 = NOT_logicFunction(y1)
+	final_x = np.array([y2, y3])
+	finalOutput = AND_logicFunction(final_x)
+	return finalOutput
 
-# Hyperparameters
-input_size = 2
-hidden_size = 4
-output_size = 1
-learning_rate = 0.1
-epochs = 10000
+# testing the Perceptron Model
+test1 = np.array([0, 0])
+test2 = np.array([0, 1])
+test3 = np.array([1, 0])
+test4 = np.array([1, 1])
 
-# Initialize weights
-weights_input_hidden, weights_hidden_output = initialize_weights(input_size, hidden_size, output_size)
-
-# Training
-for epoch in range(epochs):
-    # Forward pass
-    hidden_layer_activation, predicted_output = forward_pass(inputs, weights_input_hidden, weights_hidden_output)
-
-    # Compute error
-    error = outputs - predicted_output
-    output_layer_adjustment = error * sigmoid_derivative(predicted_output)
-    
-    # Backpropagation
-    hidden_layer_error = output_layer_adjustment.dot(weights_hidden_output.T)
-    hidden_layer_adjustment = hidden_layer_error * sigmoid_derivative(hidden_layer_activation)
-
-    # Update weights
-    weights_hidden_output += hidden_layer_activation.T.dot(output_layer_adjustment) * learning_rate
-    weights_input_hidden += inputs.T.dot(hidden_layer_adjustment) * learning_rate
-
-print("Trained weights (input to hidden):\n", weights_input_hidden)
-print("Trained weights (hidden to output):\n", weights_hidden_output)
-print("Predicted output:\n", predicted_output)
+print("XOR({}, {}) = {}".format(0, 0, XOR_logicFunction(test1)))
+print("XOR({}, {}) = {}".format(0, 1, XOR_logicFunction(test2)))
+print("XOR({}, {}) = {}".format(1, 0, XOR_logicFunction(test3)))
+print("XOR({}, {}) = {}".format(1, 1, XOR_logicFunction(test4)))
