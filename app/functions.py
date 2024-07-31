@@ -48,6 +48,9 @@ def list_files(directory, extension='.py'):
     """List all files in a directory with a specific extension."""
     return sorted([f for f in os.listdir(directory) if f.endswith(extension)], key=lambda x: (x != 'main.py', x))
 
+def capture_the_pdf(directory, filename='print.pdf'):
+    return os.path.join(directory, filename)
+
 def display_practical_code(practical_dir, practical_info):
     """Display code files for a practical."""
     files_sorted = list_files(practical_dir)
@@ -70,7 +73,19 @@ def display_practical_code(practical_dir, practical_info):
     """, unsafe_allow_html=True)
     st.markdown('<h2 class="subheader">Aim</h2>', unsafe_allow_html=True)
     st.markdown(f'<div class="aim-content">{practical_info.get("aim", "No aim has been provided for this practical yet. We will update it soon.")}</div>', unsafe_allow_html=True)
-
+    st.markdown("")
+    try:
+        print_pdf = capture_the_pdf(practical_dir)
+        with open(print_pdf, "rb") as pdf_file:
+                pdf_data = pdf_file.read()
+        st.download_button(
+            label="Code & Output PDF",
+            data=pdf_data,
+            file_name=practical_dir,
+            mime="application/pdf"
+        )
+    except:
+        pass
     st.markdown("---")  
 
     if files_sorted:

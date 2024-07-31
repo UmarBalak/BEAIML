@@ -2,10 +2,10 @@
     "subject": "Natural Language Processing",
     "practicals": [
         {
-            "name": "stemming",
-            "files": ["stem.py"],
-            "aim": "To understand basic ML algorithms.",
-            "con": "Requires good understanding of mathematics."
+            "name": "Tokenization",
+            "files": ["main.py"],
+            "aim": "Apply text preprocessing techniques for any given text: Tokenization",
+            "con": "We have implemented tokenization as a text preprocessing technique, effectively breaking down the input text into individual tokens. This process has allowed us to structure the text for further natural language processing tasks, demonstrating its critical role in text analysis."
         }
     ]
 }
