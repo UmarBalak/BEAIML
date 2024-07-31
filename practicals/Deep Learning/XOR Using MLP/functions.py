@@ -20,13 +20,11 @@ def dot_activation(x, w, b):
 	y = unitStep_activation(v)
 	return y
 
-def NOT_logicFunction(x):
+def NOT_logic(x):
 	return dot_activation(x, wNOT, bNOT)
 
-def AND_logicFunction(x):
+def AND_logic(x):
 	return dot_activation(x, w, bAND)
 
-def OR_logicFunction(x):
+def OR_logic(x):
 	return dot_activation(x, w, bOR)
-
-
