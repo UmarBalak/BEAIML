@@ -81,7 +81,7 @@ def display_practical_code(practical_dir, practical_info):
         st.download_button(
             label="Code & Output PDF",
             data=pdf_data,
-            file_name=practical_dir,
+            file_name=f"{practical_dir}.pdf",
             mime="application/pdf"
         )
     except:
