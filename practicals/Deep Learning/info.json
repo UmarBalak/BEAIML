@@ -6,6 +6,12 @@
             "files": ["main.py", "functions.py"],
             "aim": "Implement a Multi-Layer Perceptron (MLP) model to simulate the XOR Gate.",
             "con": "We successfully implemented a Multi-Layer Perceptron (MLP) model to solve the XOR problem, a classic example in machine learning that highlights the power of neural networks in capturing non-linear relationships."
+        },
+        {
+            "name": "Implement Gradient Descent",
+            "files": ["main.py", "batch.py", "mini_batch.py", "SGD.py"],
+            "aim": "Implement Batch GD, Mini-Batch GD and Stochastic GD algorithms to learn the parameters of supervised single layer Feedforward Neural Network.",
+            "con": "Successfully implemented types of gradient descent."
         }
     ]
 }
