@@ -79,7 +79,7 @@ def display_practical_code(practical_dir, practical_info):
         with open(print_pdf, "rb") as pdf_file:
                 pdf_data = pdf_file.read()
         st.download_button(
-            label="Code & Output PDF",
+            label="Download PDF",
             data=pdf_data,
             file_name=f"{practical_dir}.pdf",
             mime="application/pdf"
