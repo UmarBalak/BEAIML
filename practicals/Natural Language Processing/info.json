@@ -6,6 +6,12 @@
             "files": ["main.py"],
             "aim": "Apply text preprocessing techniques for any given text: Tokenization",
             "con": "We have implemented tokenization as a text preprocessing technique, effectively breaking down the input text into individual tokens. This process has allowed us to structure the text for further natural language processing tasks, demonstrating its critical role in text analysis."
+        },
+        {
+            "name": "Stemming",
+            "files": ["main.py"],
+            "aim": "To apply text pre-processing technique for any given text using stemming.",
+            "con": "Hence, we applied stemming pre-processing technique for the given text."
         }
     ]
 }
