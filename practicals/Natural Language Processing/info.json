@@ -10,8 +10,14 @@
         {
             "name": "Stemming",
             "files": ["main.py"],
-            "aim": "To apply text pre-processing technique for any given text using stemming.",
-            "con": "Hence, we applied stemming pre-processing technique for the given text."
+            "aim": "Apply text preprocessing techniques for any given text: Stemming",
+            "con": "We have applied the stemming preprocessing technique to the given text, reducing words to their base or root form. This process has simplified the text for subsequent natural language processing tasks, though it may result in non-standard word forms."
+        },
+        {
+            "name": "Lemmatization",
+            "files": ["main.py"],
+            "aim": "Apply text preprocessing techniques for any given text: Lemmatization",
+            "con": "We have implemented lemmatization as a text preprocessing technique, effectively reducing words to their base or dictionary form. This process has improved the accuracy of subsequent natural language processing tasks by ensuring the words are standardized and contextually meaningful."
         }
     ]
 }
