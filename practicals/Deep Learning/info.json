@@ -20,7 +20,7 @@
             "con": "We successfully implemented the backpropagation algorithm with two hidden layers."
         },
         {
-            "name": "Autoencoder",
+            "name": "Autoencoder for Image Compression",
             "files": ["main.py"],
             "aim": "Design the architecture and implement the autoencoder model for image compression.",
             "con": "We successfully designed and implemented autoencoder model for image compression."
