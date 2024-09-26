@@ -12,6 +12,12 @@
             "files": ["main.py", "batch.py", "mini_batch.py", "SGD.py"],
             "aim": "Implement Batch GD, Mini-Batch GD and Stochastic GD algorithms to learn the parameters of supervised single layer Feedforward Neural Network.",
             "con": "Successfully implemented types of gradient descent."
+        },
+        {
+            "name": "Backpropagation",
+            "files": ["main.py"],
+            "aim": "Implement Backpropagation algorithm to train a deep neural network with atleast 2 hidden layers.",
+            "con": "We successfully implemented the backpropagation algorithm with two hidden layers."
         }
     ]
 }
