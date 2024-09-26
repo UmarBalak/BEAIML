@@ -18,6 +18,12 @@
             "files": ["main.py"],
             "aim": "Implement Backpropagation algorithm to train a deep neural network with atleast 2 hidden layers.",
             "con": "We successfully implemented the backpropagation algorithm with two hidden layers."
+        },
+        {
+            "name": "Autoencoder",
+            "files": ["main.py"],
+            "aim": "Design the architecture and implement the autoencoder model for image compression.",
+            "con": "We successfully designed and implemented autoencoder model for image compression."
         }
     ]
 }
