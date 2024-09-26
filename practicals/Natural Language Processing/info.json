@@ -30,6 +30,18 @@
             "files": ["main.py"],
             "aim": "To implement the N-Gram Model for the given input text in English and Hindi languages.",
             "con": "Hence, we have implemented the N-Gram Model for the given text in English and Hindi languages."
+        },
+        {
+            "name": "POS Tagging",
+            "files": ["main.py"],
+            "aim": "To study different POS tags and perform POS tagging on the given text.",
+            "con": "Hence, we have successfully studied and performed the POS tagging on the given text."
+        },
+        {
+            "name": "Named Entity Recognition",
+            "files": ["main.py"],
+            "aim": "To implement the Named Entity Recognizer for the given input text.",
+            "con": "Hence, we implemented the Named Entity Recognizer for the given input text."
         }
     ]
 }
