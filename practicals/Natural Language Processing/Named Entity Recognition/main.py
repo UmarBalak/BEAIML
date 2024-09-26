@@ -4,7 +4,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 # Input text
-text = "Artificial intelligence is revolutionizing the way we live and work."
+text = "Apple Inc. is planning to invest in artificial intelligence startups in California."
 
 # Process the text
 doc = nlp(text)
