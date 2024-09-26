@@ -24,6 +24,12 @@
             "files": ["main.py"],
             "aim": "To apply text pre-processing technique for any given text using stop word removal technique.",
             "con": "Hence, we applied stop word removal pre-processing technique for the given text."
+        },
+        {
+            "name": "N-Gram Model",
+            "files": ["main.py"],
+            "aim": "To implement the N-Gram Model for the given input text in English and Hindi languages.",
+            "con": "Hence, we have implemented the N-Gram Model for the given text in English and Hindi languages."
         }
     ]
 }
